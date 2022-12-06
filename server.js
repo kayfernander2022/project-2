@@ -25,6 +25,15 @@ app.get("/",(req,res) => {
   res.render("index.ejs")
 })
 
+app.get("/recipes",(req,res) => {
+  //res.send("<h1>Hey! Server is Working</h1>")
+  res.render("./recipes/index.ejs")
+})
+
+
+//show
+
+
 //start server
 const PORT =process.env.PORT || 3000
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
