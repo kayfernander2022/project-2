@@ -21,7 +21,8 @@ app.use(express.urlencoded({extended: true}))
 
 //Routes and Routers
 app.get("/",(req,res) => {
-  res.send("<h1>Hey! Server is Working</h1>")
+  //res.send("<h1>Hey! Server is Working</h1>")
+  res.render("index.ejs")
 })
 
 //start server
