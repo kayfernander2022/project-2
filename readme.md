@@ -1,6 +1,6 @@
-## Recipe App
+## Allergy Recipe App
 
-#### Welcome to the Recipe App!
+#### Welcome to the Allergy Recipe App!
 
 ##### An app that users can contribute and read recipes and the recipes of others.  This app is especially useful for those with food allergies as the top allergens come up highlighted throughout the app.
 
@@ -21,12 +21,13 @@
 #### Link to Trello Board
 [TRELLO BOARD](https://trello.com/invite/b/WzUc0MP5/ATTI5bd1b5243c4ed366025e8c14ff1635709A268B3A/tumeric-unit-2-project)
 
-#### Wireframes
-![](./wireframe-recipe.png)
+#### Wireframe
+![](./wireframe1-recipeapp%20Small.png)
 
 #### Credits
 
 
 
 
-#### Ice Box
+#### Ice Box items:
+###### 2022 Karen Fernander |

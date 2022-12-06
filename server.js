@@ -4,18 +4,13 @@ const express = require("express") // import express
 const morgan = require("morgan") //import morgan
 const methodOverride = require("method-override")
 const mongoose = require("mongoose")
+const users = require('./models/user')
+const allergen = require('./models/allergen')
+const recipe = require('./models/recipe')
+const recipeAllergen = require('./models/recipeAllergens')
 
 //create express app
 const app = express()
-
-//establish database connection
-mongoose.connect(process.env.DATABASE_URL)
-
-//mongoose connection events
-mongoose.connection
-.on("open", () => console.log("Connected to Mongoose"))
-.on("close", () => console.log("Disconnected from Mongoose"))
-.on("error", (error) => console.log(error))
 
 
 //register middleware
@@ -26,7 +21,7 @@ app.use(express.urlencoded({extended: true}))
 
 //Routes and Routers
 app.get("/",(req,res) => {
-  res.send("<h1>Server is Working</h1>")
+  res.send("<h1>Hey! Server is Working</h1>")
 })
 
 //start server
