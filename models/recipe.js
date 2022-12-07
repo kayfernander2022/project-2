@@ -5,6 +5,7 @@ const {Schema, model } = mongoose;
 
 const recipeSchema = new Schema({
   name: String,
+  img: String,
   ingredients: String,
   directions: String,
   notes: String,

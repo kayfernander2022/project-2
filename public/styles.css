@@ -2,20 +2,16 @@ header{
   text-align:center;
 }
 
-nav {
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
-  background-color: teal;
-  margin: 5px;
-}
+
 nav {
   background-color: #f6f6f6;
+  justify-content: space-around;
   color:teal;
   display: flex;
   align-items: center;
   padding: 10px;
   min-height: 60px;
+  margin: 5px;
 }
 
 h1{
@@ -26,5 +22,12 @@ h1{
   height: 400px;
   
 
+}
+
+#recipesContainer{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
 }
 

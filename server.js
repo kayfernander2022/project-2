@@ -26,9 +26,10 @@ app.get("/",(req,res) => {
 })
 
 app.get("/recipes",(req,res) => {
-  //res.send("<h1>Hey! Server is Working</h1>")
-  res.render("./recipes/index.ejs")
-})
+  recipe.find({}, (err, recipe) => {
+  res.render("./recipes/index.ejs",{recipe})
+});
+});
 
 
 //show
