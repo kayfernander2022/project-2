@@ -20,6 +20,7 @@ mongoose.connection.on("open", () => { //if open and connect to db run this func
         
         console.log(data);//should see recipes as json
         //res.json(data)
+        mongoose.connection.close();
       });
   });
   });

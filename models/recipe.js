@@ -9,6 +9,7 @@ const recipeSchema = new Schema({
   ingredients: String,
   directions: String,
   notes: String,
+  username: String,
   user: {
     type: Schema.Types.ObjectId,
     ref: "User"
