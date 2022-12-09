@@ -5,20 +5,30 @@
     <body>
         <%- include('../partials/head.ejs') %>
 
-
+      <h2>showing one recipe card</h2>
         <main>
-            <div id="instructionContainer">
-                
+          <div>
+            Image: <input type="url" name="img"><br>
+          </div>
+            <div id="directionsContainer">
+              Directions: <input type="text" name="directions"><br>   
             </div>
             <div id="allergenContainer">
-
+              Food Allergy: <input type="text" name="foodallergy"><br>
             </div>
-            <div id="recipeContainer">
+            <div id="notesContainer">
+                Notes: <input type="text" name="notes"><br>
+              </div>
+              
+          <div> 
+            <input type="submit" value="Edit">
+          </div>
                 <div>
                     <span>Recipe 1</span>
-                    <spign>recipe image</span>
+                    <span>recipe image</span>
                 </div>
             </div>
         </main>
     </body>
 </html>
+

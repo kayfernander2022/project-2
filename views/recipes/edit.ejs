@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/header.ejs') %>
+    <h1>Edit Recipe Card</h1>
+    <body>
+        <%- include('../partials/head.ejs') %>
+
+        <form action="/recipes/<%= recipe._id %>?_method=PUT" method="post">
+        <fieldset>
+          <legend>Edit a <%= recipe.name %></legend>
+          <label>
+            NAME:<input
+              type="text"
+              name="name"
+              value="<%= recipe.name %>"
+              placeholder="enter fruit name"
+            />
+          </label>
+          <label>
+            COLOR:<input
+              type="text"
+              name="ingredients"
+              value="<%= recipe.ingredients %>"
+              placeholder="enter a ingredients"
+            />
+          </label>
+        </fieldset>
+
+
+
+        <form action="/recipes/" method="POST">
+          <div>
+            Title: <input type="text" name="name"><br>
+          </div>
+          <div>
+            Image: <input type="url" name="img"><br>
+          </div>
+          <div>
+            Ingredients: <input type="text" name="ingredients"> <br>
+            <ul style=>
+                
+            </ul>         
+          </div>
+          <div>
+            Food Allergy: <input type="text" name="foodallergy"><br>
+          </div>
+              <div>
+                Directions: <input type="text" name="directions"><br>
+              </div>
+              <div>
+                Notes: <input type="text" name="notes"><br>
+              </div>
+            
+              
+            <div> 
+            <input type="submit" value="submit recipe card">
+          </div>
+
+      </form>
+    </body>
+</html>
