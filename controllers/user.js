@@ -34,7 +34,7 @@ router.post("/login", (req, res) => {
       if (result) {
         req.session.username = username
         req.session.loggedIn = true
-        res.redirect("/recipes/1");
+        res.redirect("/recipes/_id");
       } else {
         res.send("wrong password");
       }
@@ -83,11 +83,6 @@ router.get("/login",(req,res) => { //
 //  res.render("./user/signup.ejs")
 //})
 
-router.get("/recipes/viewall",(req,res) => {
-  recipe.find({}, (err, recipe) => {
-  res.render("./recipes/index.ejs",{recipe})
-});
-});
 
 router.post("/login", (req, res) => {//
     //need to add logic to check if user exist in mongo. 

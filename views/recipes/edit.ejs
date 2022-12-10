@@ -5,7 +5,7 @@
     <body>
         <%- include('../partials/head.ejs') %>
 
-        <form action="/recipes/<%= recipe._id %>?_method=PUT" method="post">
+        <form action="/recipes/<%= recipe.id %>?_method=PUT" method="post">
         <fieldset>
           <legend>Edit a <%= recipe.name %></legend>
           <label>
@@ -13,49 +13,43 @@
               type="text"
               name="name"
               value="<%= recipe.name %>"
-              placeholder="enter fruit name"
+              placeholder="enter recipe name"
             />
           </label>
           <label>
-            COLOR:<input
+            Image Url:<input
+              type="text"
+              name="img"
+              value="<%= recipe.img %>"
+              placeholder="enter img url"
+            />
+          </label>
+          <label>
+            Ingredients:<input
               type="text"
               name="ingredients"
               value="<%= recipe.ingredients %>"
-              placeholder="enter a ingredients"
+              placeholder="enter ingredients"
+            />
+          </label>
+          <label>
+            Directions:<input
+              type="text"
+              name="directions"
+              value="<%= recipe.directions %>"
+              placeholder="enter directions"
+            />
+          </label>
+          <label>
+            Notes:<input
+              type="text"
+              name="notes"
+              value="<%= recipe.notes %>"
+              placeholder="enter notes"
             />
           </label>
         </fieldset>
-
-
-
-        <form action="/recipes/" method="POST">
-          <div>
-            Title: <input type="text" name="name"><br>
-          </div>
-          <div>
-            Image: <input type="url" name="img"><br>
-          </div>
-          <div>
-            Ingredients: <input type="text" name="ingredients"> <br>
-            <ul style=>
-                
-            </ul>         
-          </div>
-          <div>
-            Food Allergy: <input type="text" name="foodallergy"><br>
-          </div>
-              <div>
-                Directions: <input type="text" name="directions"><br>
-              </div>
-              <div>
-                Notes: <input type="text" name="notes"><br>
-              </div>
-            
-              
-            <div> 
-            <input type="submit" value="submit recipe card">
-          </div>
-
+          <input type="submit" value="submit recipe card">
       </form>
     </body>
 </html>

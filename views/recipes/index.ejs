@@ -14,7 +14,7 @@
                 <% for(let i =0; i< recipe.length; i++) { %> 
                     
                     <li>
-                    <a href="/recipes/<%=recipe[i].id%>/show"><%=recipe[i].name%></a>
+                    <a href="/recipes/show/<%=recipe[i].id %>"><%=recipe[i].name%></a>
                     </li>
                     <li>
                         <img src="<%= recipe[i].img %>">
@@ -30,7 +30,7 @@
                     </li>
             <form action="/recipes/<%=recipe[i].id %>?_method=DELETE" method="POST">
                     <input type="submit" value="Delete">
-                </form>
+            </form>
         <% } %>
             </ul>
                 </div>

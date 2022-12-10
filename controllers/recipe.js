@@ -13,9 +13,9 @@ router.use((req, res, next) => {
 });
 
 
-
-//Index
-router.get("/:userId",(req,res) => {
+//Routes
+//Gets //Index
+router.get("/viewall",(req,res) => {
   Recipe.find({}, (err, recipe) => {
   res.render("./recipes/index.ejs",{recipe})
 });
@@ -26,55 +26,75 @@ router.get("/new", (req, res) => {
   res.render("./recipes/new.ejs");
 });
 
+router.get("/:userId",(req,res) => {
+  Recipe.find({}, (err, recipe) => {
+  res.render("./recipes/index.ejs",{recipe})
+});
+});
 
-//Delete 
-router.delete("/recipes/:id", (req, res) => {
+//Show
+router.get('/show/:id', (req, res) => {
+  res.render('./recipes/show.ejs', { recipe: Recipe[req.params.id], index: req.params.id });//giving the show one recipe
+  });
+
+//Edit
+router.get("/:id/edit", (req, res) => {
   const id = req.params.id
+  console.log(id);
+  Recipe.findById(id, (err, recipe) => {
+
+    if(recipe)
+    {
+      res.render("./recipes/edit.ejs", {recipe})
+    }
+    else
+    {
+      //redirect to error page for not finding recipe
+    }
+  })
+})
+
+//Delete
+router.delete("/:id", (req, res) => {
+  const id = req.params.id
+  const userId = 123;//test
   Recipe.findByIdAndDelete(id, (err, recipe) => {
-      
-    res.redirect("./recipes/index.ejs")
+    res.redirect(`/recipes/${userId}`)
 })
 })
 
-//update (missing)
-//UPDATE ROUTE
+//Update
+//updates the recipe with information from the form
 router.put("/:id", (req, res) => {
   // get the id from params
   const id = req.params.id
-  
-  Recipe.findByIdAndUpdate(id, req.body, {new: true}, (err, recipe) => {//
+  console.log("updateId: " + id);
+  console.log("updates " + req.body.name);
+
+  Recipe.findByIdAndUpdate(id, req.body, {new: true}, (err, recipe) => {
+    console.log(recipe)
+    //
     //send the "new" updated recipe. We will get the old one if we miss this line.
       // redirect user back to main page with recipe
       //res.redirect("/recipes")
       //OR
       //see the updateds to the recipe on its own page
-      res.redirect(`/recipes/${req.params.id}`)
+      //res.redirect(`/recipes/show/${req.params.id}`)
   })
+  
 })
 
 
 //Create
-router.post("/recipe", (req, res) => {
+router.post("/", (req, res) => {
   Recipe.create(req.body,(err,recipe) =>{
   res.redirect("./recipes/index.ejs")
     });
   });
 
 //EDIT 
-router.get("/:id/edit", (req, res) => {
-  const id = req.params.id
-  
-  Recipe.findById(id, (err, recipe) => {
-    console.log(err);
-      
-      res.render("./recipes/edit.ejs", {recipe})
-  })
-})
+// shows the actual form
 
-//Show
-router.get('/:id/show', (req, res) => {
-  res.render('./recipes/show.ejs', { recipe: recipe[req.params.id], index: req.params.id });//giving the show one recipe
-  });
 
 
 module.exports = router
