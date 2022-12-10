@@ -4,33 +4,42 @@
 
     <body>
         <%- include('../partials/head.ejs') %>
+        <% if(userId) {%>
         <a href="/user/logout"><button>Logout</button></a>
-
+        <%}%>
         <a id="newRecipeLink" href="/recipes/new">Add New Recipe</a>
         <main>
 
             <div class="recipesContainer">
                 <ul style="list-style:none; margin-left:25px">
-                <% for(let i =0; i< recipe.length; i++) { %> 
+                <% for(let i =0; i< recipes.length; i++) { %> 
                     <div class="recipeCard">
                     <li>
-                    <a href="/recipes/show/<%=recipe[i].id %>"><%=recipe[i].name%></a>
+                    <% if(userId) {%>   
+                    <a href="/recipes/show/<%=recipes[i].id %>"><%=recipes[i].name%></a>
+                    <% }else {%>
+                        <span><%=recipes[i].name%></span>
+                    <%}%>
                     </li>
                     <li>
-                        <img src="<%= recipe[i].img %>">
+                        <img src="<%= recipes[i].img %>">
                     </li>
                     <li>
-                <span style="font-weight: bold;">ingredients:</span> <%=recipe[i].ingredients %>
+            <% if(userId) {%>
+                <span style="font-weight: bold;">ingredients:</span> <%=recipes[i].ingredients %>
                     </li>
                     <li>
-                <span style="font-weight: bold;">directions:</span> <%= recipe[i].directions %>
+                <span style="font-weight: bold;">directions:</span> <%= recipes[i].directions %>
                     </li>
                     <li>
-                <span style="font-weight: bold;">notes:</span> <%= recipe[i].notes%>
+                <span style="font-weight: bold;">notes:</span> <%= recipes[i].notes%>
                     </li>
-            <form action="/recipes/<%=recipe[i].id %>?_method=DELETE" method="POST">
+          
+
+            <form action="/recipes/<%=recipes[i].id %>?_method=DELETE" method="POST">
                     <input type="submit" value="Delete">
             </form>
+            <% } %>
         </div>
         <% } %>
             </ul>

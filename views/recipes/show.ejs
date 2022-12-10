@@ -8,26 +8,17 @@
       <h2>showing one recipe card</h2>
         <main>
           <div>
-            Image: <input type="url" name="img"><br>
+            <img src="<%=recipe.img%>" alt="<%=recipe.name%>"/>
+            <ul>
+              <li>Name: <%=recipe.name%></li>
+              <li>Ingredients: <%=recipe.ingredients%></li>
+              <li>Directions: <%=recipe.directions%></li>
+              <li>Notes: <%=recipe.notes%></li>
+            </ul>
           </div>
-            <div id="directionsContainer">
-              Directions: <input type="text" name="directions"><br>   
-            </div>
-            <div id="allergenContainer">
-              Food Allergy: <input type="text" name="foodallergy"><br>
-            </div>
-            <div id="notesContainer">
-                Notes: <input type="text" name="notes"><br>
-              </div>
-              
           <div> 
-            <input type="submit" value="Edit">
+            <a href="/recipes/<%=recipe.id%>/edit">Edit</a>
           </div>
-                <div>
-                    <span>Recipe 1</span>
-                    <span>recipe image</span>
-                </div>
-            </div>
         </main>
     </body>
 </html>
