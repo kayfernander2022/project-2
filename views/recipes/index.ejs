@@ -9,10 +9,10 @@
         <a id="newRecipeLink" href="/recipes/new">Add New Recipe</a>
         <main>
 
-            <div class="main">
+            <div class="recipesContainer">
                 <ul style="list-style:none; margin-left:25px">
                 <% for(let i =0; i< recipe.length; i++) { %> 
-                    
+                    <div class="recipeCard">
                     <li>
                     <a href="/recipes/show/<%=recipe[i].id %>"><%=recipe[i].name%></a>
                     </li>
@@ -31,28 +31,13 @@
             <form action="/recipes/<%=recipe[i].id %>?_method=DELETE" method="POST">
                     <input type="submit" value="Delete">
             </form>
+        </div>
         <% } %>
             </ul>
                 </div>
 
 
-            <div id="recipesContainer">
-                <div>
-                    <span>Recipe 1</span>
-                    <span>recipe image</span>
-                </div>
-                <div>
-                    <span>Recipe 2</span>
-                    <span>recipe image</span>
-                </div>
-                <div>
-                    <span>Recipe 3</span>
-                    <span>recipe image</span>
-                </div>
-                <div>
-                    <span>Recipe 4</span>
-                    <span>recipe image</span>
-                </div>
+            
             </div>
         </main>
     </body>
