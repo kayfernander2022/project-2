@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/header.ejs') %>
-
+    <%- include('../partials/head.ejs') %>
+    <%- include('../partials/nav.ejs', {isLoggedIn:isLoggedIn}) %>
     <body>
-        <%- include('../partials/head.ejs') %>
-        <% if(userId) {%>
-        <a href="/user/logout"><button>Logout</button></a>
-        <%}%>
+        <% if(isLoggedIn) {%>
         <a id="newRecipeLink" href="/recipes/new">Add New Recipe</a>
+        <%}%>
         <main>
-
             <div class="recipesContainer">
                 <ul style="list-style:none; margin-left:25px">
                 <% for(let i =0; i< recipes.length; i++) { %> 
                     <div class="recipeCard">
                     <li>
-                    <% if(userId) {%>   
+                    <% if(isLoggedIn) {%>   
                     <a href="/recipes/show/<%=recipes[i].id %>"><%=recipes[i].name%></a>
                     <% }else {%>
                         <span><%=recipes[i].name%></span>
@@ -25,7 +22,7 @@
                         <img src="<%= recipes[i].img %>">
                     </li>
                     <li>
-            <% if(userId) {%>
+            <% if(isLoggedIn) {%>
                 <span style="font-weight: bold;">ingredients:</span> <%=recipes[i].ingredients %>
                     </li>
                     <li>

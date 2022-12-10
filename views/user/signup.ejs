@@ -2,9 +2,8 @@ This is signups
 <!DOCTYPE html>
 <html lang="en">
   <%- include("../partials/head.ejs") %>
-
+  <%- include('../partials/nav.ejs', {isLoggedIn:false}) %>
   <body>
-    <%- include("../partials/header.ejs") %>
     <main>
       <div>
         <form action="/user/signup" method="post">

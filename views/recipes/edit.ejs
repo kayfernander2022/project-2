@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/header.ejs') %>
+    <%- include('../partials/head.ejs') %>
+    <%- include('../partials/nav.ejs', {isLoggedIn:true}) %>
     <h1>Edit Recipe Card</h1>
     <body>
-        <%- include('../partials/head.ejs') %>
-
+      
         <form action="/recipes/<%= recipe.id %>?_method=PUT" method="post">
         <fieldset>
           <legend>Edit a <%= recipe.name %></legend>

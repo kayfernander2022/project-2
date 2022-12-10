@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/header.ejs') %>
+    <%- include('../partials/head.ejs') %>
+    <%- include('../partials/nav.ejs', {isLoggedIn:true}) %>
     <h1>New Recipe Card</h1>
     <body>
-        <%- include('../partials/head.ejs') %>
         <form action="/recipes" method="POST">
 
           <div>
@@ -22,7 +22,7 @@
                 Directions: <input type="text" name="directions"><br>
               </div>
               <div>
-                Notes: <input type="text" name="notes"><br>
+                Notes: <textarea name="notes"></textarea>
               </div>
             
               

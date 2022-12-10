@@ -32,9 +32,12 @@ router.post("/login", (req, res) => {
       //check if password matches
       const result = bcrypt.compareSync(password, user.password);
       if (result) {
+        const userId = user._id
+        console.log("userId " + userId);
         req.session.username = username
         req.session.loggedIn = true
-        res.redirect("/recipes/_id");
+        req.session.userId = userId
+        res.redirect(`/recipes/${userId}`);
       } else {
         res.send("wrong password");
       }

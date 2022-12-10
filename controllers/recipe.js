@@ -6,7 +6,7 @@ const router = express.Router()
 // Authorization Middleware
 router.use((req, res, next) => {
   const path = req.path;
-  if (req.session.loggedIn || path === '/viewall') {
+  if (req.session.loggedIn || path.startsWith('/viewall')) {
     next();
   } else {
     res.redirect("/user/login");
@@ -17,8 +17,10 @@ router.use((req, res, next) => {
 //Routes
 //Gets //Index
 router.get("/viewall",(req,res) => {
+  const userId = req.session.userId
+
   Recipe.find({}, (err, recipes) => {
-  res.render("./recipes/index.ejs",{recipes: recipes, userId: undefined})
+  res.render("./recipes/index.ejs",{recipes: recipes, isLoggedIn: req.session.loggedIn, userId: userId})
 });
 });
 
@@ -30,8 +32,8 @@ router.get("/new", (req, res) => {
 router.get("/:userId",(req,res) => {
   const userId = req.params.userId;
 
-  Recipe.find({}, (err, recipes) => {
-  res.render("./recipes/index.ejs",{recipes: recipes, userId: userId})
+  Recipe.find({'user': userId}, (err, recipes) => {
+  res.render("./recipes/index.ejs",{recipes: recipes, isLoggedIn: req.session.loggedIn, userId: userId})
 });
 });
 
@@ -87,7 +89,7 @@ router.put("/:id", (req, res) => {
       //res.redirect("/recipes")
       //OR
       //see the updateds to the recipe on its own page
-      //res.redirect(`/recipes/show/${req.params.id}`)
+     res.redirect(`/recipes/show/${req.params.id}`)
   })
   
 })
@@ -100,8 +102,6 @@ router.post("/", (req, res) => {
     });
   });
 
-//EDIT 
-// shows the actual form
 
 
 

@@ -1,0 +1,14 @@
+<header>
+  
+  <nav>
+    <a href="/recipes/viewall"><span>View All</span></a>
+    <a href="/user/signup"><span>Signup</span></a>
+    <% if(!isLoggedIn){ %>
+    <a href="/user/login"><span>Login</span></a>
+    <% }else{ %>
+      <a href="/user/logout"><span>Logout</span></a>
+    <%} %>
+  </nav>
+
+  <h1>Allergy Recipe Book</h1>
+</header>
