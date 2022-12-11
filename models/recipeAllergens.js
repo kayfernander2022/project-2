@@ -2,14 +2,17 @@ const mongoose = require('./connection')
 const {Schema, model } = mongoose;
 
 const recipeAllergen = new Schema({
-  recipe: {
+  recipeId: {
     type: Schema.Types.ObjectId,
     ref: "Recipe"
   },
-  allergen: {
+  allergenId: {
     type: Schema.Types.ObjectId,
     ref: "Allergen"
   },
+  ingredients:[
+    {type: Schema.Types.String}
+  ],
   doesAllergyExist: Boolean
 });
 

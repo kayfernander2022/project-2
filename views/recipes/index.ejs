@@ -5,7 +5,13 @@
     <body>
         <% if(isLoggedIn) {%>
         <a id="newRecipeLink" href="/recipes/new">Add New Recipe</a>
-        <%}%>
+        
+        <% 
+           if(path === 'viewall'){%>
+            <a href="/recipes/<%=userId%>">Show My Recipes</a>
+           <%}
+        }%>
+
         <main>
             <div class="recipesContainer">
                 <ul style="list-style:none; margin-left:25px">
@@ -22,17 +28,7 @@
                         <img src="<%= recipes[i].img %>">
                     </li>
                     <li>
-            <% if(isLoggedIn) {%>
-                <span style="font-weight: bold;">ingredients:</span> <%=recipes[i].ingredients %>
-                    </li>
-                    <li>
-                <span style="font-weight: bold;">directions:</span> <%= recipes[i].directions %>
-                    </li>
-                    <li>
-                <span style="font-weight: bold;">notes:</span> <%= recipes[i].notes%>
-                    </li>
-          
-
+            <% if(isLoggedIn && recipes[i].user?.id=== userId) {%>
             <form action="/recipes/<%=recipes[i].id %>?_method=DELETE" method="POST">
                     <input type="submit" value="Delete">
             </form>

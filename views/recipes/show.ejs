@@ -6,13 +6,26 @@
       <h2>showing one recipe card</h2>
         <main>
           <div>
-            <img src="<%=recipe.img%>" alt="<%=recipe.name%>"/>
-            <ul>
-              <li>Name: <%=recipe.name%></li>
-              <li>Ingredients: <%=recipe.ingredients%></li>
-              <li>Directions: <%=recipe.directions%></li>
-              <li>Notes: <%=recipe.notes%></li>
+            <img src="<%=recipe.img%>" alt="<%=recipe.name%>"/><BR>
+            <span>Name: <%=recipe.name%></span>
+          </div>
+          <div>
+            <ul>Ingredients: 
+              <% recipe.ingredients.forEach(ingredient => {%>
+              <li><%=ingredient.name%> - Is Allergen <%=ingredient.isAllergen%></li>
+              <%})%>
             </ul>
+          </div>
+          <div>
+            <ol>Directions: 
+              <% recipe.directions.forEach(direction => {%>
+                <li><%=direction%></li>
+                <%})%>
+            </ol>
+          </div>
+          <div>
+            <span>Notes: </span><BR>
+            <%=recipe.notes%>
           </div>
           <div> 
             <a href="/recipes/<%=recipe.id%>/edit">Edit</a>

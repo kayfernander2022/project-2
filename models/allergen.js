@@ -3,7 +3,9 @@ const {Schema, model } = mongoose;
 
 const allergenSchema = new Schema({
   name: String,
-  allergens: String
+  allergens: [
+    {type: Schema.Types.String}
+  ]
 });
 
 

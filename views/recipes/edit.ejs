@@ -1,53 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include('../partials/head.ejs') %>
+    <script src="/static/app.js" defer></script>
     <%- include('../partials/nav.ejs', {isLoggedIn:true}) %>
     <h1>Edit Recipe Card</h1>
     <body>
-      
+      <style>
+        button.link{
+          color: blueviolet;
+          background: none; border: none; margin: 0; padding: 0; cursor: pointer;
+        }
+      </style>
         <form action="/recipes/<%= recipe.id %>?_method=PUT" method="post">
+        <input type="hidden" name="user" value="<%=userId%>" />
         <fieldset>
-          <legend>Edit a <%= recipe.name %></legend>
-          <label>
-            NAME:<input
-              type="text"
-              name="name"
-              value="<%= recipe.name %>"
-              placeholder="enter recipe name"
-            />
-          </label>
-          <label>
-            Image Url:<input
-              type="text"
-              name="img"
-              value="<%= recipe.img %>"
-              placeholder="enter img url"
-            />
-          </label>
-          <label>
-            Ingredients:<input
-              type="text"
-              name="ingredients"
-              value="<%= recipe.ingredients %>"
-              placeholder="enter ingredients"
-            />
-          </label>
-          <label>
-            Directions:<input
-              type="text"
-              name="directions"
-              value="<%= recipe.directions %>"
-              placeholder="enter directions"
-            />
-          </label>
-          <label>
-            Notes:<input
-              type="text"
-              name="notes"
-              value="<%= recipe.notes %>"
-              placeholder="enter notes"
-            />
-          </label>
+          <legend>Editing <%= recipe.name %> Recipe</legend>
+          <div>
+            <label>
+              NAME:
+            </label>
+            <input
+                type="text"
+                name="name"
+                value="<%= recipe.name %>"
+                placeholder="enter recipe name"
+              />
+            <label>
+              Image Url:
+            </label>
+            <input
+                type="text"
+                name="img"
+                value="<%= recipe.img %>"
+                placeholder="enter img url"
+              />
+          </div>
+          <div>
+            <label>
+              Ingredients:
+              <button class="link" type="button" onclick=addNextIngredientClick()>Add Next Ingredient</button>
+            </label>
+            <ul id="ingredientsList">
+              <% recipe.ingredients.forEach(ingredient =>{ %>
+                <li>
+                  <input
+                  type="text"
+                  name="ingredients"
+                  value="<%= ingredient %>"
+                  placeholder="enter ingredients"
+                  style="width: 300px;"/>
+                  <button class="link" type="button" onclick=removeIngredientClick(this)>Remove Ingredient</button>
+                </li>
+              <%})%>
+            </ul>
+          </div>
+          <div>
+            <label>
+              Directions:
+              <button class="link" type="button" onclick=addNewStepClick()>Add New Step</button>
+            </label>
+            <ol id="directionsList">
+              <% recipe.directions.forEach(direction =>{ %>
+              <li><input
+                type="text"
+                name="directions"
+                value="<%= direction %>"
+                placeholder="enter directions"
+                style="width: 600px;"/>
+                <button class="link" type="button" onclick=removeDirectionStepClick(this)>Remove Step</button>
+              </li>
+              <%})%>
+            </ol>
+          </div>
+          <div>
+            <label>
+              Notes:<textarea
+                name="notes"
+                placeholder="enter notes"><%= recipe.notes %></textarea>
+            </label>
+          </div>
         </fieldset>
           <input type="submit" value="submit recipe card">
       </form>
