@@ -53,7 +53,11 @@ router.get("/viewall",(req,res) => {
   const userId = req.session.userId
 
   Recipe.find({}, (err, recipes) => {
-    res.render("./recipes/index.ejs",{recipes: recipes, isLoggedIn: req.session.loggedIn, userId: userId, path: 'viewall'})
+    res.render("./recipes/index.ejs",{
+      recipes: recipes, 
+      isLoggedIn: req.session.loggedIn,
+      userId: userId, 
+      path: 'viewall'})
 }).populate('user');
 
 
@@ -61,14 +65,19 @@ router.get("/viewall",(req,res) => {
 
 //New
 router.get("/new", (req, res) => {
-  res.render("./recipes/new.ejs", {userId: req.session.userId});
+  res.render("./recipes/new.ejs", {
+    userId: req.session.userId});
 });
 
 router.get("/:userId",(req,res) => {
   const userId = req.params.userId;
 
  Recipe.find({'user': userId}, (err, recipes) => {
-  res.render("./recipes/index.ejs",{recipes: recipes, isLoggedIn: req.session.loggedIn, userId: userId, path:'userview'})
+  res.render("./recipes/index.ejs",{
+    recipes: recipes, 
+    isLoggedIn: req.session.loggedIn, 
+    userId: userId, 
+    path:'userview'})
 }).populate('user');;
 });
 
@@ -145,16 +154,16 @@ router.put("/:id", (req, res) => {
   console.log("updateId: " + id);
   console.log("updates " + req.body.name);
 
-  Recipe.findByIdAndUpdate(id, req.body, {new: true}, (err, recipe) => {
+  Recipe.findByIdAndUpdate(id, req.body, {new: true}, (err, recipe) => {//send the "new" updated recipe. We will get the old one if we miss this line.
     console.log(recipe)
 
     RecipeAllergen.deleteMany({}, (err, data) => {
-      getRecipeAllergens(recipe.id, recipe.ingredients).then((recipeAllergens) => {
+      getRecipeAllergens(recipe.id, recipe.ingredients || []).then((recipeAllergens) => {
         console.log(recipeAllergens);
         RecipeAllergen.create(recipeAllergens, (err, newRecipeAllergens) =>{
           console.log(newRecipeAllergens)
-           //
-          //send the "new" updated recipe. We will get the old one if we miss this line.
+        
+          
             // redirect user back to main page with recipe
             //res.redirect("/recipes")
             //OR
@@ -177,14 +186,12 @@ router.post("/", (req, res) => {
   Recipe.create(req.body,(err,recipe) =>{
     const recipeId = recipe.id;
 
-    getRecipeAllergens(recipeId, ingredients).then((recipeAllergens) => {
+    getRecipeAllergens(recipeId, ingredients || []).then((recipeAllergens) => {
       console.log(recipeAllergens);
       RecipeAllergen.create(recipeAllergens, (err, newRecipeAllergens) =>{
         console.log(newRecipeAllergens)
 
-        Recipe.find({'user': userId}, (err, recipes) => {
-          res.redirect(`/recipes/${userId}`)
-          });
+        res.redirect(`/recipes/${userId}`)
       })
     })
   });

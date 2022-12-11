@@ -1,20 +1,21 @@
 
- //<li><input type="text" name="ingredients" style="width: 100px;"> 
- //<button class="link" type="button" onclick=removeIngredientClick()>Remove Ingredient<button></li>
-
+ //
+ //
+ //
+//create new line item
  function getNewListItem(){
   return document.createElement('li');
 }
-
-function getNewInputItem(inputName, width){
-  const newInput = document.createElement('input');
-  newInput.type = 'text';
-  newInput.style = `width: ${width}px`;
+//new input field function
+function getNewInputItem(inputName, width){//resized, make edits
+  const newInput = document.createElement('input');//create the input
+  newInput.type = 'text';//set attribute
+  newInput.style = `width: ${width}px`;//set style
   newInput.name = inputName;
 
   return newInput;
 }
-
+//get buttons
 function getNewButtonItem(buttonText, btnOnClick){
   const newButton = document.createElement('button');
   newButton.className = 'link';
@@ -45,12 +46,12 @@ function addNewStepClick(){
   const newInputItem = getNewInputItem('directions', 600);
   const newButtonItem = getNewButtonItem('Remove Step', () => removeDirectionStepClick(newButtonItem));
   
-  newListItem.appendChild(newInputItem);
-  newListItem.appendChild(newButtonItem);
+  newListItem.appendChild(newInputItem);//add input
+  newListItem.appendChild(newButtonItem);//add button
 
   ingListElem.appendChild(newListItem);
 
-  console.log("New step clicked");
+  console.log("New direction step clicked");//test functon when add new clicked
 }
 
 function removeIngredientClick(el){
@@ -59,8 +60,8 @@ function removeIngredientClick(el){
 }
 
 function removeDirectionStepClick(el){
-  console.log(el);
+  console.log(el);//test
   el.parentNode.remove();
-  console.log("remove dir clicked");
+  console.log("remove dir clicked");//test the onclick
 }
 
