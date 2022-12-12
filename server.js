@@ -12,6 +12,7 @@ const UserRouter = require("./controllers/user")
 const RecipeRouter = require('./controllers/recipe')
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const { response } = require("express")
 
 //create express app
 const app = express()
@@ -34,6 +35,10 @@ app.use("/user", UserRouter)
 
 
 //Routes and Routers
+
+app.get('/dburl', (req, res) => {
+  res.send(`My connection string is: ${process.env.DATABASE_URL} and secret is: ${process.env.SECRET}`)
+})
 
 //Home
 app.get("/",(req,res) => {
