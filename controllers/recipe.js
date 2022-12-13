@@ -16,12 +16,14 @@ async function getRecipeAllergens(recipeId, ingredients){
 
   allergens.forEach(allergen => {
     const allergensFound = [];
-    ingredients.forEach(ingredient => {
-      if(allergen.allergens.indexOf(ingredient.toLowerCase()) >=0)
-      {
-        allergensFound.push(ingredient);
+    for(let i=0; i <ingredients.length; i++){
+      for(let k=0; k < allergen.allergens.length; k++){
+          if(ingredients[i].includes(allergen.allergens[k].toLowerCase())){
+            allergensFound.push(ingredients[i]);
+            break;
+          }
+        }
       }
-    })
    
     const allergenItem = {
       recipeId: recipeId,
