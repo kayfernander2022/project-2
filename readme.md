@@ -14,7 +14,9 @@
 - Node.js
 - Mongo DB
 - Mongoose
-- 
+- Bootstrap
+- Google Fonts
+- Milligram
 
 #### Planning Materials
 
@@ -30,4 +32,5 @@
 
 
 #### Ice Box items:
+- 
 ###### 2022 Karen Fernander |
