@@ -26,7 +26,6 @@
 #### Wireframe
 ![](./wireframe1-recipeapp%20Small.png)
 
-#### Credits
 
 
 

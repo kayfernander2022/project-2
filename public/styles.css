@@ -58,7 +58,7 @@ nav {
 
 .mainBody{
   display: flex;
-  background-image: url(https://attachment.outlook.live.net/owa/MSA%3Akayfernander%40hotmail.com/service.svc/s/GetAttachmentThumbnail?id=AQMkADAwATY0MDABLWQ2OWItMTk1Yi0wMAItMDAKAEYAAAMdBDeQeQxuRqdTwM%2F8EvJQBwDHjNhfsmp6Tbopyp6UxFKdAAACAQwAAADHjNhfsmp6Tbopyp6UxFKdAAbZDIQcAAAAARIAEACYbvp%2FHBJATaAx8qbLSZn2&thumbnailType=2&isc=1&token=eyJhbGciOiJSUzI1NiIsImtpZCI6IkQ4OThGN0RDMjk2ODQ1MDk1RUUwREZGQ0MzODBBOTM5NjUwNDNFNjQiLCJ0eXAiOiJKV1QiLCJ4NXQiOiIySmozM0Nsb1JRbGU0Tl84dzRDcE9XVUVQbVEifQ.eyJvcmlnaW4iOiJodHRwczovL291dGxvb2subGl2ZS5jb20iLCJ1YyI6ImU1ZTc2ZTFjMGY3MjQyNTE4YzcwZDMzZjk3Y2U2MDVjIiwidmVyIjoiRXhjaGFuZ2UuQ2FsbGJhY2suVjEiLCJhcHBjdHhzZW5kZXIiOiJPd2FEb3dubG9hZEA4NGRmOWU3Zi1lOWY2LTQwYWYtYjQzNS1hYWFhYWFhYWFhYWEiLCJpc3NyaW5nIjoiV1ciLCJhcHBjdHgiOiJ7XCJtc2V4Y2hwcm90XCI6XCJvd2FcIixcInB1aWRcIjpcIjE3NTkyMjIyMDQ5MzAzOTVcIixcInNjb3BlXCI6XCJPd2FEb3dubG9hZFwiLFwib2lkXCI6XCIwMDA2NDAwMC1kNjliLTE5NWItMDAwMC0wMDAwMDAwMDAwMDBcIixcInByaW1hcnlzaWRcIjpcIlMtMS0yODI3LTQwOTYwMC0zNjAwNDg4Nzk1XCJ9IiwibmJmIjoxNjcwODY4NjQ3LCJleHAiOjE2NzA4NjkyNDcsImlzcyI6IjAwMDAwMDAyLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMEA4NGRmOWU3Zi1lOWY2LTQwYWYtYjQzNS1hYWFhYWFhYWFhYWEiLCJhdWQiOiIwMDAwMDAwMi0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvYXR0YWNobWVudC5vdXRsb29rLmxpdmUubmV0QDg0ZGY5ZTdmLWU5ZjYtNDBhZi1iNDM1LWFhYWFhYWFhYWFhYSIsImhhcHAiOiJvd2EifQ.pdydWvNZPPFVVauNKjS-0xeJYPGkfoH3bnOHMQbj7nc4BaNqZFVSObaccVnRP0ggrdODmW90KpSrpVwLJ3iSjmDL4YPK4aBbxbhr-V38W7HQqaO1P10MZHf7XAjwW7R38tjxd96hunSX-T2pVvUut5qxpzDn6uaM7_vRPRBYtuYOxZxAqHUPDeQtZr5MJUxch044EUEiQUhwfNwBfDtCPa7L8tCrF70J4QmS7YyTNMDixAtexZs1pky-TI6ZS22L91AARwta3t39hM6pyZbGuy39ba9agXxV93CQAfDUtjjtdGt0UjvCh0UO5yZtRJRBNBjnXXXoArEsfdYYjszHxQ&X-OWA-CANARY=p1UcQQu4aE2D5Ck4zL665WDe7Kls3NoYxDZGMKiZ30ifT-UoFfb07VRWnpIuSkUXI7Uz8eWiiwY.&owa=outlook.live.com&scriptVer=20221104009.06&animation=true);
+  background-image: url(/static/images/backgroundimg.jpg);
   height: 100%;
   opacity: 10;
   justify-content: center;
@@ -123,6 +123,7 @@ nav {
   margin-right: 10px;
   font-size: 16px;
 }
+
 .iconcontainer{
   display:flex; 
   justify-content: center; 
@@ -159,6 +160,9 @@ nav {
   position: relative;
 }
 
+.icons{
+  display: flex;
+}
 
 @media (max-width: 1080px){
 
@@ -179,6 +183,7 @@ nav {
   
   .icons{
     font-size: 15px;
+    display: block;
   }
   h3{
     font-size: 20px;

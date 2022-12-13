@@ -3,7 +3,7 @@ const Recipe = require('../models/recipe')
 const Allergen = require('../models/allergen')
 const RecipeAllergen = require('../models/recipeAllergens')
 const router = express.Router()
-
+//get all allergen from allergen db
 function getAllergens()
 {
   return Allergen.find({})
@@ -38,8 +38,8 @@ async function getRecipeAllergens(recipeId, ingredients){
 
 // Authorization Middleware
 router.use((req, res, next) => {
-  const path = req.path;
-  if (req.session.loggedIn || path.startsWith('/viewall')) {
+  const path = req.path; //get path to current page
+  if (req.session.loggedIn || path.startsWith('/viewall')) { //auth user if login or view page
     next();
   } else {
     res.redirect("/user/login");
@@ -186,7 +186,7 @@ router.post("/", (req, res) => {
   Recipe.create(req.body,(err,recipe) =>{
     const recipeId = recipe.id;
     const ingredients = recipe.ingredients;
-    
+
     getRecipeAllergens(recipeId, ingredients || []).then((recipeAllergens) => {
       console.log(recipeAllergens);
       RecipeAllergen.create(recipeAllergens, (err, newRecipeAllergens) =>{
