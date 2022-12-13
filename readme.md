@@ -16,7 +16,7 @@
 - Mongoose
 - Bootstrap
 - Google Fonts
-- Milligram
+- Milligram Framework
 
 #### Planning Materials
 
@@ -32,5 +32,8 @@
 
 
 #### Ice Box items:
-- 
+- Allergen Table
+- Exclude recipes with a specific allergen
+- Grocery List
+- Meal Calendar
 ###### 2022 Karen Fernander |

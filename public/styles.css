@@ -34,17 +34,7 @@ nav {
   margin: 50px;
 }
 
-@media (max-width: 1080px){
-  .navlinks > a {
-    margin: 10px;
-  }
-}
 
-@media (max-width: 600px){
-  .navlinks > a {
-    margin: 10px;
-  }
-}
 
 .homeP{
   display: flex;
@@ -74,6 +64,7 @@ nav {
   justify-content: center;
   background-size: cover;
 }
+
 
 #recipesContainer{
   display:flex;
@@ -132,9 +123,36 @@ nav {
   margin-right: 10px;
   font-size: 16px;
 }
-footer{
-  display: flex;
-  color:black;
-  justify-content: center;
+.iconcontainer{
+  display:flex; 
+  justify-content: center; 
+  width: 100%; 
+  height: 70px;
 }
 
+
+@media (max-width: 1080px){
+
+  .navlinks > a {
+    margin: 10px;
+  }
+}
+
+@media (max-width: 600px){
+
+  .navtitle{
+    font-size: 18px;
+  }
+  .navlinks > a {
+    margin: 2px;
+    font-size: 12px;
+  }
+  
+  .icons{
+    font-size: 15px;
+  }
+  h3{
+    font-size: 20px;
+  }
+  
+}
