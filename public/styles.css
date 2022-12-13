@@ -130,6 +130,35 @@ nav {
   height: 70px;
 }
 
+.detailsCard{
+  position: relative;
+  padding:5px;
+  border-style: solid;
+  border-radius:8px;
+  border: 2px 2px;
+  border-color: black;
+  margin: auto;
+  height: 300px;
+  width: 450px;
+  box-shadow: 2px 2px;
+  overflow: auto;
+}
+
+.recipeCardHeader{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  font-size:60px; 
+}
+
+.main{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+}
+
 
 @media (max-width: 1080px){
 
@@ -141,7 +170,7 @@ nav {
 @media (max-width: 600px){
 
   .navtitle{
-    font-size: 18px;
+    font-size: 23px;
   }
   .navlinks > a {
     margin: 2px;
