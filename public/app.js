@@ -10,7 +10,7 @@
 function getNewInputItem(inputName, width){//resized, make edits
   const newInput = document.createElement('input');//create the input
   newInput.type = 'text';//set attribute
-  newInput.style = `width: ${width}px`;//set style
+  newInput.style = `width: ${width}px; margin-right:10px`;//set style
   newInput.name = inputName;
 
   return newInput;
@@ -43,7 +43,7 @@ function addNextIngredientClick(){
 function addNewStepClick(){
   const ingListElem = document.getElementById('directionsList');
   const newListItem = getNewListItem();
-  const newInputItem = getNewInputItem('directions', 600);
+  const newInputItem = getNewInputItem('directions', 700);
   const newButtonItem = getNewButtonItem('Remove Step', () => removeDirectionStepClick(newButtonItem));
   
   newListItem.appendChild(newInputItem);//add input

@@ -2,35 +2,104 @@
 <html lang="en">
     <%- include('../partials/head.ejs') %>
     <%- include('../partials/nav.ejs', {isLoggedIn:true}) %>
+    <style>
+      .flex-parent-element{
+        display: flex;
+        flex-wrap: wrap;
+        width: 50%;
+      }
+
+      .flex-child-element{
+        flex: 1;
+        margin: 10px;
+      }
+
+      .flex-child-element:first-child{
+        margin-right:  20px;
+      }
+
+      .detailsCard{
+          position: relative;
+          padding:5px;
+          border-style: solid;
+          border-radius:8px;
+          border: 2px 2px;
+          border-color: black;
+          margin: 5px;
+          height: 245px;
+          width: 300px;
+          box-shadow: 2px 2px;
+      }
+      .main{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: relative;
+      }
+      .recipeCardHeader{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: relative;
+        font-size:60px; 
+      }
+
+      .detailsCardButtons
+      {
+      }
+    </style>
     <body>
-      <h2>showing one recipe card</h2>
-        <main>
+      <div style="position:relative;">
+        <div>
+        <a href="javascript:history.back()">Go Back</a>
+        </div>
+        <div>
+          <div class="recipeCardHeader">
+            <div>
+              <span><%=recipe.name%></span>
+            </div>
+            <div style="margin-left: 10px; margin-right:10px">
+              <a style="font-size: 15px; margin: 0px; padding: 0px;" href="/recipes/<%=recipe.id%>/edit">Edit</a>
+            </div>  
+            <form action="/recipes/<%=recipe.id %>?_method=DELETE" method="POST">
+              <button type="submit" style="color: teal; background: none; border: none; margin: 0; padding: 0; cursor: pointer; font-size: 15px;">Delete</button>
+            </form>
+        </div>
+        </div>
+        <main class="main">
           <div>
-            <img src="<%=recipe.img%>" alt="<%=recipe.name%>"/><BR>
-            <span>Name: <%=recipe.name%></span>
-          </div>
-          <div>
-            <ul>Ingredients: 
-              <% recipe.ingredients.forEach(ingredient => {%>
-              <li><%=ingredient.name%> - Is Allergen <%=ingredient.isAllergen%></li>
-              <%})%>
-            </ul>
-          </div>
-          <div>
-            <ol>Directions: 
-              <% recipe.directions.forEach(direction => {%>
-                <li><%=direction%></li>
+            <div class="detailsCard">
+              <ul>Ingredients: 
+                <% recipe.ingredients.forEach(ingredient => {%>
+                  <li>
+                    <%if(ingredient.isAllergen){%>
+                    <mark><%=ingredient.name%></mark>
+                    <%}else{%>
+                      <%=ingredient.name%>
+                      <%}%>
+                  </li>
                 <%})%>
-            </ol>
+              </ul>
+            </div>
+            <div class="detailsCard">
+              <ol>Directions: 
+                <% recipe.directions.forEach(direction => {%>
+                  <li><%=direction%></li>
+                  <%})%>
+              </ol>
+            </div>
           </div>
-          <div>
-            <span>Notes: </span><BR>
-            <%=recipe.notes%>
-          </div>
-          <div> 
-            <a href="/recipes/<%=recipe.id%>/edit">Edit</a>
+          <div class="">
+            <div class="detailsCard">
+              <img style="position:relative; height: 100%; width:100%; border-radius: 8px; margin: 0px;" src="<%=recipe.img%>" alt="<%=recipe.name%>"/>
+            </div>
+            <div class="detailsCard">
+              <span>Notes: </span><BR>
+              <%=recipe.notes%>
+            </div>
           </div>
         </main>
+      </div>
     </body>
 </html>
 

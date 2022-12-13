@@ -3,23 +3,33 @@
     <%- include('../partials/head.ejs') %>
     <script src="/static/app.js" defer></script>
     <%- include('../partials/nav.ejs', {isLoggedIn:true}) %>
-    <h1>Edit Recipe Card</h1>
     <body>
       <style>
         button.link{
-          color: blueviolet;
+          color: teal;
           background: none; border: none; margin: 0; padding: 0; cursor: pointer;
+          margin-right: 10px;
+        }
+        .form{
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
       </style>
+      <div class="form">
+        <h2>Editing <%= recipe.name %> Recipe</h2>
+      </div>
+      <div class="form">
         <form action="/recipes/<%= recipe.id %>?_method=PUT" method="post">
         <input type="hidden" name="user" value="<%=userId%>" />
         <fieldset>
-          <legend>Editing <%= recipe.name %> Recipe</legend>
+         
           <div>
             <label>
               NAME:
             </label>
             <input
+                style="width: 300px; margin-left: 50px;"
                 type="text"
                 name="name"
                 value="<%= recipe.name %>"
@@ -29,6 +39,7 @@
               Image Url:
             </label>
             <input
+                style="width:400px; margin-left: 50px;"
                 type="text"
                 name="img"
                 value="<%= recipe.img %>"
@@ -40,7 +51,7 @@
               Ingredients:
               <button class="link" type="button" onclick=addNextIngredientClick()>Add Next Ingredient</button>
             </label>
-            <ul id="ingredientsList">
+            <ul id="ingredientsList" style="list-style-type: none; margin-left: 50px;">
               <% recipe.ingredients.forEach(ingredient =>{ %>
                 <li>
                   <input
@@ -59,28 +70,30 @@
               Directions:
               <button class="link" type="button" onclick=addNewStepClick()>Add New Step</button>
             </label>
-            <ol id="directionsList">
+            <ol id="directionsList" style="margin-left: 50px;">
               <% recipe.directions.forEach(direction =>{ %>
               <li><input
                 type="text"
                 name="directions"
                 value="<%= direction %>"
                 placeholder="enter directions"
-                style="width: 600px;"/>
+                style="width: 700px;"/>
                 <button class="link" type="button" onclick=removeDirectionStepClick(this)>Remove Step</button>
               </li>
               <%})%>
             </ol>
           </div>
           <div>
-            <label>
-              Notes:<textarea
+            <label>Notes: </label>
+              <textarea
+                style="width: 700px; margin-left: 50px;"
                 name="notes"
                 placeholder="enter notes"><%= recipe.notes %></textarea>
-            </label>
+           
           </div>
         </fieldset>
-          <input type="submit" value="submit recipe card">
+          <input style="background-color:teal; border-style: none;" type="submit" value="submit recipe card">
       </form>
+    </div>
     </body>
 </html>

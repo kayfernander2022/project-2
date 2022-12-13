@@ -14,32 +14,29 @@
 
         <main>
             <div class="recipesContainer">
-                <ul style="list-style:none; margin-left:25px">
+              
                 <% for(let i =0; i< recipes.length; i++) { %> 
-                    <div class="recipeCard">
-                    <li>
+                <div class="recipeCard">
+                <div>
                     <% if(isLoggedIn) {%>   
-                    <a href="/recipes/show/<%=recipes[i].id %>"><%=recipes[i].name%></a>
+                    <a style="font-size: 30px;" href="/recipes/show/<%=recipes[i].id %>"><%=recipes[i].name%></a>
                     <% }else {%>
                         <span><%=recipes[i].name%></span>
                     <%}%>
-                    </li>
-                    <li>
-                        <img src="<%= recipes[i].img %>">
-                    </li>
-                    <li>
-            <% if(isLoggedIn && recipes[i].user?.id=== userId) {%>
-            <form action="/recipes/<%=recipes[i].id %>?_method=DELETE" method="POST">
-                    <input type="submit" value="Delete">
-            </form>
-            <% } %>
-        </div>
-        <% } %>
-            </ul>
                 </div>
-
-
-            
+                <div class="recipeImg">
+                    <img style="height: 250px; width:375px; border-radius: 8px;" src="<%= recipes[i].img %>">
+                </div>
+                <div class="recipeCardButtons">
+                    <% if(isLoggedIn && recipes[i].user?.id=== userId) {%>
+                    <form id="deleteLink" action="/recipes/<%=recipes[i].id %>?_method=DELETE" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
+                    <% } %>
+                </div>  
+                </div>
+        <% } %>
+          
             </div>
         </main>
     </body>

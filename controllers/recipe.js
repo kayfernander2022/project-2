@@ -180,12 +180,13 @@ router.put("/:id", (req, res) => {
 //Create
 router.post("/", (req, res) => {
   console.log(req.body);
-  const ingredients = req.body.ingredients;
+  
   const userId = req.session.userId;
   
   Recipe.create(req.body,(err,recipe) =>{
     const recipeId = recipe.id;
-
+    const ingredients = recipe.ingredients;
+    
     getRecipeAllergens(recipeId, ingredients || []).then((recipeAllergens) => {
       console.log(recipeAllergens);
       RecipeAllergen.create(recipeAllergens, (err, newRecipeAllergens) =>{

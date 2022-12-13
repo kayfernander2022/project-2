@@ -3,41 +3,59 @@
     <%- include('../partials/head.ejs') %>
     <script src="/static/app.js" defer></script>
     <%- include('../partials/nav.ejs', {isLoggedIn:true}) %>
-    <h1>New Recipe Card</h1>
+    
     <body>
+        <div class="form">
+            <h1>New Recipe Card</h1>
+        </div>
         <style>
           button.link{
-            color: blueviolet;
+            color: teal;
             background: none; border: none; margin: 0; padding: 0; cursor: pointer;
           }
+
+          .form{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
         </style>
+         <div class="form">
         <form action="/recipes" method="POST">
           <input type="hidden" name="user" value="<%=userId%>" />
           <div>
-            Name: <input type="text" name="name"><br>
-            Image: <input type="url" name="img"><br>
+            <label>Name: </label> 
+            <input style="width: 300px; margin-left: 50px;" type="text" name="name"><br>
+            <label> Image: </label>
+           <input  style="width:400px; margin-left: 50px;" type="url" name="img"><br>
           </div>
           <div>
-            <ul id="ingredientsList">
-            Ingredients: <button class="link" type="button" onclick=addNextIngredientClick()>Add Next Ingredient</button>
+            <label>
+              Ingredients: <button class="link" type="button" onclick=addNextIngredientClick()>Add Next Ingredient</button>
+            </label>
+            <ul id="ingredientsList" style="list-style-type: none; margin-left: 50px;">
               <li><input type="text" name="ingredients" style="width: 300px;"> 
                 <button class="link" type="button" onclick=removeIngredientClick(this)>Remove Ingredient</button></li>
             </ul>         
           </div>
           <div>
-            <ol id="directionsList">
-            Directions: <button class="link" type="button" onclick=addNewStepClick()>Add New Step</button>
-            <li><input type="text" name="directions" style="width: 6t00px;">
+            <label>
+              Directions: <button class="link" type="button" onclick=addNewStepClick()>Add New Step</button>
+            </label>
+            <ol id="directionsList" style="margin-left: 50px;">
+            <li><input type="text" name="directions" style="width: 700px;">
               <button class="link" type="button" onclick=removeDirectionStepClick(this)>Remove Step</button></li>
             </ol>
           </div>
           <div>
-            Notes: <textarea name="notes"></textarea>
+            <label>Notes: </label>
+           <textarea name="notes"  style="width: 700px; margin-left: 50px;"></textarea>
           </div>
             <div> 
             <input type="submit" value="submit recipe card">
           </div>
 
       </form>
+      </div>
     </body>
 </html>
